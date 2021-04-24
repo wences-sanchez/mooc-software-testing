@@ -26,4 +26,11 @@ public class ChocolateBagsTest {
         int result = new ChocolateBags().calculate(small, big, total);
         Assertions.assertEquals(expectedResult, result);
     }
+
+    @ParameterizedTest(name = "small={0}, big={1}, total={2}, result={3}")
+    @CsvSource({"19,0,15,15", "19,1,4,4", "19,1,0,0", "19,0,20,-1"})
+    public void onlySmallBars(int small, int big, int total, int expectedResult) {
+        int result = new ChocolateBags().calculate(small, big, total);
+        Assertions.assertEquals(result, expectedResult);
+    }
 }
